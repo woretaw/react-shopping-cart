@@ -1,0 +1,10 @@
+*{
+  box-sizing: border-box;
+}
+
+.container{
+  background-image: url('../assets/images/bg3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}

@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="text-center">My Favorites</h2>
+  <div class="fav-container p-2">
+    <div class="card m-2 py-4 text-center" *ngFor="let weather of favorites; let i=index">
+      <div (click)="getFavDetail(weather.id)">
+        <div class="icon mx-auto text-center">
+          <img style="width: 200px;" src="../../../assets/icons/{{weather.currentWeather[0].WeatherIcon}}.png" alt="">
+        </div>
+        <p class="card-text"> {{weather.currentWeather[0].WeatherText}}</p>
+        <div class="card-body">
+          <h5 class="card-title">Current Condition</h5>
+          <p>{{weather.cityName  | titlecase}}</p>
+          <p class="card-text">Temp {{weather.currentWeather[0].Temperature.Metric.Value}} &deg;C</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

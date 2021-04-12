@@ -1,0 +1,46 @@
+<div class="weather-container">
+  <h2 class="text-center">Weather App</h2>
+
+  <div class="container">
+    <form class="form-inline my-2 my-lg-0 form-container" #form="ngForm" (submit)="onSubmit(form)">
+      <div class="row">
+        <input type="text" required name="CityName" #CityName="ngModel" [(ngModel)]="cityName"
+          pattern="[a-zA-Z ][a-zA-Z ]+" class="form-control mr-sm-2" placeholder="Tel Aviv" />
+        <button [disabled]="!CityName.valid" type="submit" class="btn btn-primary">Search</button>
+      </div>
+      <div [hidden]="CityName.valid || CityName.pristine" class="row alert alert-danger my-md-1">
+        <div [hidden]="!CityName.hasError('required')">Search value is required</div>
+        <div [hidden]="!CityName.hasError('pattern')">Only English letters allowed</div>
+      </div>
+    </form>
+    <div class="float-right">
+      <button class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Save To Favorites"
+        (click)="saveOrRemoveTfav()"><i class="bi bi-heart"></i></button>
+    </div>
+  </div>
+
+  <!-- Curront condition -->
+  <div class="card text-center" *ngFor="let weather of currentWeather">
+    <img *ngIf="weather.IsDayTime" src="../../../assets/images/day.png" class="card-img-top">
+    <img *ngIf="!weather.IsDayTime" src="../../../assets/images/night.png" class="card-img-top">
+    <div class="icon mx-auto text-center">
+      <img style="width: 200px;" src="../../../assets/icons/{{weather.WeatherIcon}}.png" alt="">
+    </div>
+    <p class="card-text"> {{weather.WeatherText}}</p>
+    <div class="card-body">
+      <h5 class="card-title">Current Condition</h5>
+      <p>{{this.currentCityName  | titlecase}}</p>
+      <p class="card-text">Temp {{weather.Temperature.Metric.Value}} &deg;C</p>
+    </div>
+  </div>
+  <!-- the 5 day forcast -->
+  <div class="forcat-container p-2">
+    <div class="card m-2 py-4" *ngFor="let forecast of forecastsWeather">
+      <h5 class="text-center">{{forecast.Date | date:'EEE'}}</h5>
+      <div class="icon mx-auto text-center">
+        <img src="../../../assets/icons/{{forecast.Day.Icon}}.png" alt="">
+      </div>
+      <p class="text-center">Temp {{fahrenToCelsus(+forecast.Temperature.Maximum.Value)}} &deg;C</p>
+    </div>
+  </div>
+</div>
