@@ -24,6 +24,7 @@
     "@ngrx/entity": "^11.1.0",
     "@ngrx/store": "^11.1.0",
     "@ngrx/store-devtools": "^11.1.0",
+    "angular-cli-ghpages": "^1.0.0-rc.1",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
     "ngx-toastr": "^13.2.1",
