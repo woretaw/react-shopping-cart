@@ -42,7 +42,7 @@ export class WeatherComponent implements OnInit {
     //   data$ = resp.payload.data;
     //console.log('entity', data$);
     // });
-    // this.getCityData(this.currentCityName);
+    this.getCityData(this.currentCityName);
     this.currentWeather = JSON.parse(
       localStorage.getItem('curruntWeatherStore')
     );
@@ -53,7 +53,6 @@ export class WeatherComponent implements OnInit {
     await this.store
       .select((state) => state)
       .subscribe((data) => {
-        console.log('StoreData', data);
         this.storeData = data;
       });
 
@@ -68,7 +67,6 @@ export class WeatherComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.cityName);
     this.getCityData(this.cityName);
     this.currentCityName = this.cityName;
   }
@@ -89,7 +87,6 @@ export class WeatherComponent implements OnInit {
           'curruntWeatherStore',
           JSON.stringify(this.currentWeather)
         );
-        console.log('currentWeather', this.currentWeather);
       },
       (err) => {
         console.log(err);
@@ -105,17 +102,15 @@ export class WeatherComponent implements OnInit {
           'forcustWeatherStore',
           JSON.stringify(this.forecastsWeather)
         );
-        console.log('forcst', this.forecastsWeather);
       },
       (err) => {
-        console.log(err.message);
+        console.log(err);
       }
     );
   }
 
   //add weather location to favorite
   saveOrRemoveTfav() {
-    console.log('fav', this.storeData);
     if (this.storeData.entityCache.hasOwnProperty('currentconditions')) {
       var lsFvorites = JSON.parse(localStorage.getItem('favorite'));
       var newFav = {
