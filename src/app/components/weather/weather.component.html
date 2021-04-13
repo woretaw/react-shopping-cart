@@ -21,10 +21,10 @@
 
   <!-- Curront condition -->
   <div class="card text-center" *ngFor="let weather of currentWeather">
-    <img *ngIf="weather.IsDayTime" src="../../../assets/images/day.png" class="card-img-top">
-    <img *ngIf="!weather.IsDayTime" src="../../../assets/images/night.png" class="card-img-top">
+    <img *ngIf="weather.IsDayTime" src="assets/images/day.png" class="card-img-top">
+    <img *ngIf="!weather.IsDayTime" src="assets/images/night.png" class="card-img-top">
     <div class="icon mx-auto text-center">
-      <img style="width: 200px;" src="../../../assets/icons/{{weather.WeatherIcon}}.png" alt="">
+      <img style="width: 200px;" src="assets/icons/{{weather.WeatherIcon}}.png" alt="">
     </div>
     <p class="card-text"> {{weather.WeatherText}}</p>
     <div class="card-body">
@@ -38,7 +38,7 @@
     <div class="card m-2 py-4" *ngFor="let forecast of forecastsWeather">
       <h5 class="text-center">{{forecast.Date | date:'EEE'}}</h5>
       <div class="icon mx-auto text-center">
-        <img src="../../../assets/icons/{{forecast.Day.Icon}}.png" alt="">
+        <img src="assets/icons/{{forecast.Day.Icon}}.png" alt="">
       </div>
       <p class="text-center">Temp {{fahrenToCelsus(+forecast.Temperature.Maximum.Value)}} &deg;C</p>
     </div>

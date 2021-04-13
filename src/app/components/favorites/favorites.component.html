@@ -4,7 +4,7 @@
     <div class="card m-2 py-4 text-center" *ngFor="let weather of favorites; let i=index">
       <div (click)="getFavDetail(weather.id)">
         <div class="icon mx-auto text-center">
-          <img style="width: 200px;" src="../../../assets/icons/{{weather.currentWeather[0].WeatherIcon}}.png" alt="">
+          <img style="width: 200px;" src="assets/icons/{{weather.currentWeather[0].WeatherIcon}}.png" alt="">
         </div>
         <p class="card-text"> {{weather.currentWeather[0].WeatherText}}</p>
         <div class="card-body">
